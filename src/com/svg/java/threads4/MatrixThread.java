@@ -10,8 +10,8 @@ public class MatrixThread extends Thread {
     private static final int ELEMENTS = 15;
     private static final int PROCESSORS  = Runtime.getRuntime().availableProcessors();
     private static final int RANGE = ELEMENTS / PROCESSORS;
-    private static final long[][] vectorWithOutConcurrency = new long[ELEMENTS][ELEMENTS];
-    private static final long[][] vectorWithConcurrency = new long[ELEMENTS][ELEMENTS];
+    private static final long[][] vectorWithOutConcurrency = new long[ELEMENTS][ELEMENTS * 1_000_000];
+    private static final long[][] vectorWithConcurrency = new long[ELEMENTS][ELEMENTS * 1_000_000];
 
     private final int firstIndex, lastIndex;
 
@@ -88,7 +88,6 @@ public class MatrixThread extends Thread {
                 vectorWithOutConcurrency[row][column] -= 10;
             }
         }
-        printVector(vectorWithOutConcurrency);
         System.out.printf("Version without concurrency needed time was: %d %s %n", (System.nanoTime() - time), " nanoseconds");
     }
 

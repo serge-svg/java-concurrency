@@ -7,7 +7,8 @@ public class MyRunnable implements Runnable {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        Thread t1 = new Thread(new MyRunnable());
+        Runnable runnable = new MyRunnable();
+        Thread t1 = new Thread(runnable);
         t1.start();
         System.out.printf("%s has been created %n", t1.getName());
 
